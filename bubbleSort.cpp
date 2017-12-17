@@ -47,7 +47,6 @@ void Sort::display(){
 int main(){
 	Sort object;
 	object.getElement();
-	object.display();
 	object.bubbleSort();
 	object.display();
 return 0;
