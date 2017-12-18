@@ -42,7 +42,12 @@ void List::deleteFromAnyplace(){
 	  cin >>el;
 	  if(head==NULL)
 	  cout << "THE LIST IS EMPTY"<< endl;
-	  else if(head->info==el){
+          else if (head==tail){
+	  tail=head=NULL;
+		  return;
+		  
+	  }
+           else if(head->info==el){
 	   head=head->next;
 	  }
 	  else if(tail->info==el){
@@ -84,7 +89,10 @@ void List :: insertAtTail(){
 void List ::deleteFromHead(){
 		if(head==NULL)
 		 cout << "OOPS LIST IS ALREADY EMPTY "<< endl;
-		else{
+		else if(tail==head)
+		{tail=head=NULL;
+	                return;}
+	     else{
 	    int el=head->info;
 		  head=head->next;
 		  cout << "DELETED ELEMENT IS "<< endl;
