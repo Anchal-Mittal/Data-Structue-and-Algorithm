@@ -9,36 +9,36 @@ int front=0;
 int rare=0;
 
 void ENQUEUE(){
-	if(rare==size)
- 	    cout <<"SORRY!! QUEUE IS ALREADY FULL "<< endl;
-
-	else{
+	if(rare==(size-1))
+ 	   {
+		  cout <<"SORRY!! QUEUE IS ALREADY FULL "<< endl;
+		 return ;
+        	}
+  	else{
 		int element;
-    	cout <<"ENTER THE ELEMENT DO U WANT TO INSERT INTO QUEUE"<<endl;
-    	cin >> element;
+    		cout <<"ENTER THE ELEMENT DO U WANT TO INSERT INTO QUEUE"<<endl;
+    		cin >> element;
 		queue[rare]=element;
-		++rare;
-	}
-	
+		rare++;
+		return;
+        }
 }
+
 void DEQUEUE(){
-	if(front==0)
- 	    cout <<"SORRY!! QUEUE IS ALREADY EMPTY "<< endl;
-
-	else{
-		int element;
-    	cout <<"DELETED ELEMENT IS"<<endl;
-		element=queue[front];
-		queue[front]=0;
-		front=front+1;
-
-
+	if(front==rare){
+        	 cout <<"SORRY!! QUEUE IS ALREADY EMPTY "<< endl;
+  	         return;
 	}
-
+	else{
+	       	queue[front]=0;
+		front=front+1;
+		return;
+	}
 }
-void GETELMENT(){
+
+void GETELEMENT(){
 	cout <<"THE ELEMENT OF LIST IS" <<endl;
-	for(int i=front;i<=rare;i++){
+	for(int i=front;i<rare;i++){
 		cout <<queue[i]<<"->";
 	}
 }
@@ -47,26 +47,27 @@ int main(){
 	
   int choice;
   char ch;
-  cout <<"------MENU-------"<< endl;
-  cout <<"1.ENQUEUE "<<endl;
-  cout <<"2.DEQUEUE "<<endl;
-  cout << "ENTER UR CHOICE "<< endl;
-  cin >> choice;
   do{
-    switch(choice){
-  	case 1: ENQUEUE();
+  	cout <<"------MENU-------"<< endl;
+  	cout <<"1.ENQUEUE "<<endl;
+ 	cout <<"2.DEQUEUE "<<endl;
+  	cout << "ENTER UR CHOICE "<< endl;
+	cin >> choice;
+
+    	switch(choice){
+  		case 1: ENQUEUE();
 			GETELEMENT();
 			break;
 			
-	case 2: DEQUEUE();
+		case 2: DEQUEUE();
 			GETELEMENT();
 			break;
-
 	}
-	cout <<"DO U WNAT TO PERFORM MORE OPERATION THEN PRESS Y"<< endl;
-	cin>>ch;
+     
+     	cout <<"\n DO U WNAT TO PERFORM MORE OPERATION THEN PRESS Y"<< endl;
+     	cin>>ch;
+     
   }while(ch=='Y'||ch=='y');
 
 return 0;
 	
-}
